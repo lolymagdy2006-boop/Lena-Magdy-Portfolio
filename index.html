@@ -579,25 +579,48 @@
       z-index: 200; width: 0%; transition: width 0.1s;
     }
 
+    /* ===== MOBILE FRIENDLY ===== */
     @media (max-width: 900px) {
-      .about-grid, .biz-grid { grid-template-columns: 1fr; }
+      .about-grid, .biz-grid, .projects-grid, .gains-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .menu-toggle { display: block; }
       .nav-links.open {
         display: flex; flex-direction: column; position: absolute;
         top: 100%; left: 0; right: 0; background: rgba(30,11,46,0.97);
         padding: 1.5rem; gap: 1rem; animation: slideDown 0.3s ease;
+        border-bottom: 1px solid rgba(167,139,250,0.25);
+        z-index: 150;
       }
       @keyframes slideDown {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
       }
+      .hero-photo { width: 150px; height: 150px; }
+      .cta-group { flex-wrap: wrap; justify-content: center; }
+      .hero-badges { flex-wrap: wrap; justify-content: center; }
+      .work-header { flex-direction: column; align-items: flex-start; gap: 0.6rem; }
     }
     @media (max-width: 600px) {
-      section { padding: 4rem 1.2rem; }
-      .work-card { padding: 1.5rem; }
-      .thumb-gallery { grid-template-columns: repeat(2, 1fr); }
-      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+      section { padding: 3.5rem 1.1rem; }
+      .work-card { padding: 1.25rem; }
+      .thumb-gallery, .posts-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero-tagline { font-size: 0.95rem; padding: 0 0.4rem; }
+      .hero-photo { width: 130px; height: 130px; }
+      .section-title { font-size: 1.55rem; }
+      .btn { width: 100%; justify-content: center; text-align: center; }
+      .cta-group { width: 100%; }
+      .cta-group .btn { width: 100%; }
+      .project-card .btn, .biz-card .btn, .work-card .btn { width: auto; }
+      .contact-links { flex-direction: column; align-items: stretch; }
+      .contact-link { justify-content: center; }
+      .badge { font-size: 0.78rem; }
+      .lightbox img { max-width: 95vw; max-height: 80vh; }
+    }
+    @media (max-width: 400px) {
+      .thumb-gallery, .posts-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 1.85rem; }
+      nav { padding: 0.85rem 1rem; }
     }
   </style>
 </head>
@@ -852,7 +875,6 @@
   <!-- BUSINESS / PERSONAL IDEAS -->
   <section id="ideas">
     <div class="fade-up">
-      <span class="section-label">Personal Ventures</span>
       <h2 class="section-title">Ideas I’m Building</h2>
       <p class="section-intro">Entrepreneurial concepts I’m developing - presentations and materials linked below.</p>
     </div>
