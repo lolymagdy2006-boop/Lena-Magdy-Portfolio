@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lena Magdy | Portfolio</title>
+  <meta name="description" content="Digital marketing & content portfolio by Lena Magdy - case studies, campaigns, branding projects and entrepreneurial work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple-900: #2a0a4a;
+      --purple-800: #3b1166;
+      --purple-700: #4c1d95;
+      --purple-600: #6b21a8;
+      --purple-500: #8b5cf6;
+      --purple-400: #a78bfa;
+      --purple-300: #c4b5fd;
+      --purple-200: #ddd6fe;
+      --purple-100: #ede9fe;
+      --pink-400: #f472b6;
+      --pink-300: #f9a8d4;
+      --lavender: #e9d5ff;
+      --white: #ffffff;
+      --off-white: #faf5ff;
+      --dark: #1e0b2e;
+      --glass: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--off-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background */
+    .bg-orbs {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.35;
+      animation: float 18s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--purple-600); top: -10%; left: -10%; }
+    .orb-2 { width: 400px; height: 400px; background: var(--pink-400); top: 40%; right: -5%; animation-delay: -6s; }
+    .orb-3 { width: 350px; height: 350px; background: var(--purple-500); bottom: -10%; left: 30%; animation-delay: -12s; }
+    .orb-4 { width: 280px; height: 280px; background: #7c3aed; top: 70%; left: 60%; animation-delay: -9s; opacity: 0.25; }
+    @keyframes float {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(40px,-30px) scale(1.05); }
+      66% { transform: translate(-30px,20px) scale(0.95); }
+    }
+    .particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+    .particle {
+      position: absolute; width: 4px; height: 4px; background: var(--purple-400);
+      border-radius: 50%; opacity: 0.4; animation: particle-float 12s linear infinite;
+    }
+    @keyframes particle-float {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.5; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(30,11,46,0.75); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    nav.scrolled { padding: 0.7rem 2rem; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
+    .logo {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--purple-300), var(--pink-300));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      transition: transform 0.3s;
+    }
+    .logo:hover { transform: scale(1.05); }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a {
+      color: var(--purple-200); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: color 0.3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--purple-400), var(--pink-400));
+      transition: width 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-links a:hover { color: white; }
+    .nav-links a:hover::after { width: 100%; }
+    .menu-toggle { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+    /* Sections */
+    section {
+      position: relative; z-index: 1; padding: 5.5rem 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .section-label {
+      display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--purple-400); margin-bottom: 0.8rem;
+      opacity: 0; transform: translateX(-20px);
+      transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .section-label.visible { opacity: 1; transform: translateX(0); }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 700; margin-bottom: 1.2rem;
+      background: linear-gradient(135deg, #fff, var(--purple-300));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-intro {
+      color: var(--purple-200); max-width: 560px; margin-bottom: 2.5rem; font-size: 1.05rem;
+    }
+
+    .fade-up {
+      opacity: 0; transform: translateY(50px);
+      transition: opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-scale {
+      opacity: 0; transform: scale(0.92) translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+    .fade-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+    .slide-left {
+      opacity: 0; transform: translateX(-60px);
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+    .slide-left.visible { opacity: 1; transform: translateX(0); }
+    .slide-right {
+      opacity: 0; transform: translateX(60px);
+      transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+    }
+    .slide-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding-top: 5rem; max-width: none;
+    }
+    .hero-content { max-width: 820px; }
+    .hero-photo {
+      width: 190px; height: 190px;
+      border-radius: 32%;
+      object-fit: cover;
+      border: 3px solid rgba(196, 181, 253, 0.95);
+      box-shadow:
+        0 0 0 5px rgba(139, 92, 246, 0.4),
+        0 0 32px 8px rgba(139, 92, 246, 0.6),
+        0 0 55px 12px rgba(167, 139, 250, 0.3);
+      margin-bottom: 1.7rem;
+      animation: pulse-glow 3.2s ease-in-out infinite, float-photo 6s ease-in-out infinite;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .hero-photo:hover {
+      transform: scale(1.06);
+      box-shadow:
+        0 0 0 5px rgba(196, 181, 253, 0.5),
+        0 0 36px 10px rgba(139, 92, 246, 0.7),
+        0 0 60px 14px rgba(244, 114, 182, 0.3);
+    }
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow:
+          0 0 0 4px rgba(139, 92, 246, 0.35),
+          0 0 28px 6px rgba(139, 92, 246, 0.5),
+          0 0 50px 10px rgba(167, 139, 250, 0.22);
+      }
+      50% {
+        box-shadow:
+          0 0 0 5px rgba(196, 181, 253, 0.55),
+          0 0 40px 10px rgba(167, 139, 250, 0.7),
+          0 0 65px 14px rgba(244, 114, 182, 0.35);
+      }
+    }
+    @keyframes float-photo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6.5vw, 4.2rem); font-weight: 700; line-height: 1.15; margin-bottom: 0.9rem;
+      animation: text-reveal 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes text-reveal {
+      from { opacity: 0; letter-spacing: 8px; filter: blur(8px); }
+      to { opacity: 1; letter-spacing: normal; filter: blur(0); }
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--purple-400), var(--pink-400));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-size: 200% 200%; animation: gradient-shift 4s ease infinite;
+    }
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero-tagline {
+      font-size: 1.2rem; color: var(--purple-200); margin-bottom: 1.8rem; font-weight: 300;
+      opacity: 0; animation: fadeInUp 1s 0.4s forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: center; margin-bottom: 2.2rem;
+    }
+    .badge {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; color: var(--purple-200);
+      backdrop-filter: blur(8px); opacity: 0; animation: badgePop 0.5s forwards;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .badge:hover { transform: translateY(-3px) scale(1.05); background: rgba(139,92,246,0.25); }
+    .badge:nth-child(1) { animation-delay: 0.55s; }
+    .badge:nth-child(2) { animation-delay: 0.65s; }
+    .badge:nth-child(3) { animation-delay: 0.75s; }
+    .badge:nth-child(4) { animation-delay: 0.85s; }
+    @keyframes badgePop {
+      from { opacity: 0; transform: scale(0.6); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .cta-group {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeInUp 0.8s 1s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.9rem 1.8rem; border-radius: 50px; font-weight: 600; font-size: 1rem;
+      text-decoration: none; transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer; border: none; position: relative; overflow: hidden;
+    }
+    .btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%); transition: transform 0.6s;
+    }
+    .btn:hover::before { transform: translateX(100%); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+      color: white; box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 14px 40px rgba(139,92,246,0.55);
+    }
+    .btn-outline {
+      background: transparent; color: var(--purple-200); border: 1.5px solid var(--purple-400);
+    }
+    .btn-outline:hover {
+      background: var(--glass); color: white; transform: translateY(-4px); border-color: var(--pink-400);
+    }
+    .btn-sm { padding: 0.55rem 1.2rem; font-size: 0.85rem; margin-top: 1rem; }
+
+    /* About (short) */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.3fr; gap: 2.5rem; align-items: center;
+    }
+    .about-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 24px; padding: 2rem; backdrop-filter: blur(12px);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .about-card:hover {
+      transform: translateY(-6px); box-shadow: 0 20px 40px rgba(139,92,246,0.2);
+    }
+    .about-card p { color: var(--purple-200); margin-bottom: 0.9rem; }
+    .info-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.2rem; }
+    .pill {
+      background: rgba(139,92,246,0.2); border: 1px solid rgba(139,92,246,0.35);
+      padding: 0.3rem 0.85rem; border-radius: 50px; font-size: 0.8rem; color: var(--purple-300);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .pill:hover { transform: scale(1.08); background: rgba(139,92,246,0.35); }
+
+    /* Case study / Work cards */
+    .work-card {
+      background: linear-gradient(145deg, rgba(76,29,149,0.35), rgba(42,10,74,0.6));
+      border: 1px solid var(--glass-border); border-radius: 28px; padding: 2.4rem;
+      margin-bottom: 2.2rem; position: relative; overflow: hidden;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s;
+    }
+    .work-card::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, rgba(167,139,250,0.08) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.5s;
+    }
+    .work-card:hover::before { opacity: 1; }
+    .work-card:hover {
+      transform: translateY(-8px); box-shadow: 0 25px 55px rgba(139,92,246,0.3);
+    }
+    .work-card.featured {
+      border: 1px solid rgba(167,139,250,0.45); box-shadow: 0 0 40px rgba(139,92,246,0.15);
+    }
+    .featured-tag {
+      position: absolute; top: 1.4rem; right: 1.4rem;
+      background: linear-gradient(135deg, var(--pink-400), var(--purple-500));
+      color: white; font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.9rem;
+      border-radius: 50px; letter-spacing: 1px;
+      animation: pulse-tag 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-tag {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+    .work-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 1rem; margin-bottom: 1.3rem;
+    }
+    .work-header h3 { font-size: 1.55rem; font-weight: 700; color: white; }
+    .work-header .role { color: var(--purple-300); font-weight: 500; font-size: 0.95rem; }
+    .date-badge {
+      background: rgba(255,255,255,0.1); padding: 0.35rem 0.95rem;
+      border-radius: 50px; font-size: 0.85rem; color: var(--purple-200);
+    }
+    .gains-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem; margin: 1.4rem 0;
+    }
+    .gain-item {
+      background: rgba(255,255,255,0.06); border-radius: 16px; padding: 1.15rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      opacity: 0; transform: translateY(20px);
+    }
+    .gain-item.visible { opacity: 1; transform: translateY(0); }
+    .gain-item:hover {
+      background: rgba(255,255,255,0.12); transform: translateY(-5px) scale(1.02);
+      border-color: rgba(167,139,250,0.4);
+    }
+    .gain-item .icon { font-size: 1.45rem; margin-bottom: 0.45rem; display: inline-block; transition: transform 0.3s; }
+    .gain-item:hover .icon { transform: scale(1.2) rotate(8deg); }
+    .gain-item h4 { font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--purple-200); }
+    .gain-item p { font-size: 0.85rem; color: var(--purple-300); opacity: 0.9; }
+    .skills-gained { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+    .skill-chip {
+      background: rgba(167,139,250,0.2); color: var(--purple-200);
+      padding: 0.3rem 0.85rem; border-radius: 50px; font-size: 0.8rem;
+      border: 1px solid rgba(167,139,250,0.3); transition: all 0.3s;
+    }
+    .skill-chip:hover { background: rgba(167,139,250,0.4); transform: scale(1.08); }
+
+    /* Thumbnails */
+    .thumb-gallery {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.8rem; margin-top: 1.4rem;
+    }
+    .thumb-wrap {
+      position: relative; overflow: hidden; border-radius: 12px;
+      cursor: zoom-in; aspect-ratio: 16/9;
+    }
+    .thumb-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      border: 1px solid var(--glass-border); border-radius: 12px;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s;
+    }
+    .thumb-wrap:hover img {
+      transform: scale(1.25); box-shadow: 0 12px 35px rgba(139,92,246,0.5); z-index: 5;
+    }
+    .thumb-wrap::after {
+      content: '🔍'; position: absolute; bottom: 6px; right: 6px; font-size: 0.7rem;
+      opacity: 0; transition: opacity 0.3s; background: rgba(0,0,0,0.5);
+      padding: 2px 6px; border-radius: 6px;
+    }
+    .thumb-wrap:hover::after { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000; background: rgba(15,5,30,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden; transition: opacity 0.35s, visibility 0.35s;
+      backdrop-filter: blur(10px); cursor: zoom-out;
+    }
+    .lightbox.active { opacity: 1; visibility: visible; }
+    .lightbox img {
+      max-width: 90vw; max-height: 85vh; border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: scale(0.85); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .lightbox.active img { transform: scale(1); }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem;
+      background: rgba(255,255,255,0.15); border: none; color: white;
+      font-size: 1.5rem; width: 44px; height: 44px; border-radius: 50%;
+      cursor: pointer; transition: background 0.3s, transform 0.3s;
+    }
+    .lightbox-close:hover { background: rgba(244,114,182,0.5); transform: rotate(90deg); }
+
+    .link-out {
+      display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem;
+      color: var(--purple-300); text-decoration: none; font-weight: 500;
+      transition: color 0.3s, transform 0.3s;
+    }
+    .link-out:hover { color: white; transform: translateX(4px); }
+
+    /* Innovatera posts */
+    .posts-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.8rem; margin-top: 1.4rem;
+    }
+    .post-example {
+      position: relative; overflow: hidden; border-radius: 12px;
+      border: 1px solid var(--glass-border); cursor: zoom-in; aspect-ratio: 1;
+    }
+    .post-example img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      border-radius: 12px;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s;
+    }
+    .post-example:hover img {
+      transform: scale(1.25);
+      box-shadow: 0 12px 35px rgba(139,92,246,0.5);
+      z-index: 5;
+    }
+    .post-example::after {
+      content: '🔍'; position: absolute; bottom: 6px; right: 6px; font-size: 0.7rem;
+      opacity: 0; transition: opacity 0.3s; background: rgba(0,0,0,0.5);
+      padding: 2px 6px; border-radius: 6px;
+    }
+    .post-example:hover::after { opacity: 1; }
+
+    /* Project cards */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem;
+    }
+    .project-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: 24px; overflow: hidden;
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), box-shadow 0.45s;
+      backdrop-filter: blur(10px); display: flex; flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-10px); box-shadow: 0 25px 50px rgba(139,92,246,0.25);
+    }
+    .project-visual {
+      height: 145px; display: flex; align-items: center; justify-content: center;
+      font-size: 3.3rem; position: relative; overflow: hidden; transition: transform 0.5s;
+    }
+    .project-card:hover .project-visual { transform: scale(1.05); }
+    .project-visual.pepsi { background: linear-gradient(135deg, #004b93, #e32934); }
+    .project-visual.iys { background: linear-gradient(135deg, #c084fc, #f472b6); }
+    .project-visual.care { background: linear-gradient(135deg, #fce7f3, #f9a8d4); color: #9d174d; }
+    .project-visual.uofie { background: linear-gradient(135deg, #5b21b6, #7c3aed, #a78bfa); }
+    .project-visual.figma { background: linear-gradient(135deg, #1e1b4b, #4c1d95, #c084fc); }
+    .project-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .project-body h3 { font-size: 1.2rem; margin-bottom: 0.45rem; }
+    .project-body .type {
+      font-size: 0.72rem; color: var(--purple-400); text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 0.7rem;
+    }
+    .project-body p { font-size: 0.92rem; color: var(--purple-200); flex: 1; }
+    .project-meta { font-size: 0.8rem; color: var(--purple-400); margin: 0.7rem 0 0.4rem; }
+
+    /* Business */
+    .biz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+    .biz-card {
+      background: linear-gradient(160deg, rgba(107,33,168,0.4), rgba(42,10,74,0.7));
+      border: 1px solid rgba(167,139,250,0.3); border-radius: 28px; padding: 2.1rem;
+      transition: transform 0.45s, box-shadow 0.45s; position: relative; overflow: hidden;
+    }
+    .biz-card::after {
+      content: ''; position: absolute; top: -30%; right: -30%; width: 60%; height: 60%;
+      background: radial-gradient(circle, rgba(244,114,182,0.15), transparent);
+      transition: transform 0.6s;
+    }
+    .biz-card:hover::after { transform: scale(1.4); }
+    .biz-card:hover {
+      transform: translateY(-8px); box-shadow: 0 20px 45px rgba(139,92,246,0.3);
+    }
+    .biz-card .logo-text {
+      font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 0.25rem;
+    }
+    .biz-card .tagline { color: var(--purple-300); font-size: 0.9rem; margin-bottom: 1rem; }
+    .biz-card ul { list-style: none; margin: 0.9rem 0; }
+    .biz-card li {
+      padding: 0.35rem 0; padding-left: 1.35rem; position: relative;
+      color: var(--purple-200); font-size: 0.93rem;
+    }
+    .biz-card li::before { content: '✦'; position: absolute; left: 0; color: var(--purple-400); }
+    .biz-links { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.1rem; }
+
+    /* Portfolio banner */
+    .portfolio-banner {
+      background: linear-gradient(135deg, rgba(107,33,168,0.5), rgba(244,114,182,0.3));
+      border: 1px solid rgba(167,139,250,0.4); border-radius: 28px; padding: 2.4rem;
+      text-align: center; position: relative; overflow: hidden;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .portfolio-banner:hover {
+      transform: scale(1.02); box-shadow: 0 20px 50px rgba(139,92,246,0.3);
+    }
+    .portfolio-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Skills */
+    .skills-cloud {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+    }
+    .skill-tag {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      padding: 0.65rem 1.3rem; border-radius: 50px; font-weight: 500;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1); cursor: default;
+      opacity: 0; transform: scale(0.8);
+    }
+    .skill-tag.visible { opacity: 1; transform: scale(1); }
+    .skill-tag:hover {
+      background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+      border-color: transparent; transform: scale(1.1) translateY(-3px);
+      box-shadow: 0 8px 20px rgba(139,92,246,0.4);
+    }
+
+    /* Timeline (supporting) */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--purple-500), transparent);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 1.7rem; padding-left: 1.5rem;
+      opacity: 0; transform: translateX(-30px);
+      transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    .timeline-item.visible { opacity: 1; transform: translateX(0); }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -2.35rem; top: 0.4rem;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--purple-400);
+      box-shadow: 0 0 12px var(--purple-400); transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .timeline-item:hover::before {
+      transform: scale(1.4); box-shadow: 0 0 20px var(--pink-400);
+    }
+    .timeline-item h4 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .timeline-item .meta { font-size: 0.85rem; color: var(--purple-400); margin-bottom: 0.35rem; }
+    .timeline-item p { color: var(--purple-200); font-size: 0.93rem; }
+
+    /* Contact */
+    .contact-section { text-align: center; padding-bottom: 7rem; }
+    .contact-links {
+      display: flex; flex-wrap: wrap; gap: 1.1rem; justify-content: center; margin-top: 1.8rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.55rem;
+      background: var(--glass); border: 1px solid var(--glass-border);
+      padding: 0.95rem 1.5rem; border-radius: 16px; text-decoration: none;
+      color: var(--purple-200); transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .contact-link:hover {
+      background: rgba(139,92,246,0.25); color: white;
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 10px 25px rgba(139,92,246,0.3);
+    }
+
+    footer {
+      text-align: center; padding: 2rem; color: var(--purple-400); font-size: 0.9rem;
+      border-top: 1px solid var(--glass-border); position: relative; z-index: 1;
+    }
+
+    .scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--purple-500), var(--pink-400));
+      z-index: 200; width: 0%; transition: width 0.1s;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid, .biz-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .menu-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column; position: absolute;
+        top: 100%; left: 0; right: 0; background: rgba(30,11,46,0.97);
+        padding: 1.5rem; gap: 1rem; animation: slideDown 0.3s ease;
+      }
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.2rem; }
+      .work-card { padding: 1.5rem; }
+      .thumb-gallery { grid-template-columns: repeat(2, 1fr); }
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <img src="" alt="Enlarged view" id="lightboxImg" />
+  </div>
+
+  <nav id="navbar">
+    <div class="logo">Lena Magdy</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#ideas">Ideas</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <img src="assets/profile.png" alt="Lena Magdy" class="hero-photo" />
+      <h1>Hi, I'm <span>Lena Magdy</span></h1>
+      <p class="hero-tagline">Digital Marketing Student · Content Creator · Aspiring Entrepreneur</p>
+      <div class="hero-badges">
+        <span class="badge">📍 Cairo, Egypt</span>
+        <span class="badge">🎓 French University in Egypt</span>
+        <span class="badge">🚀 Digital Marketing</span>
+        <span class="badge">💜 Content & Branding</span>
+      </div>
+      <div class="cta-group">
+        <a href="#work" class="btn btn-primary">View Internships</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK / CASE STUDIES -->
+  <section id="work">
+    <div class="fade-up">
+      <span class="section-label">Case Studies</span>
+      <h2 class="section-title">Featured Work</h2>
+      <p class="section-intro">Real projects and internships where I created content, managed channels, and shaped campaigns from concept to execution.</p>
+    </div>
+
+    <!-- UFE WorX -->
+    <div class="work-card featured fade-scale">
+      <span class="featured-tag">★ Featured</span>
+      <div class="work-header">
+        <div>
+          <h3>UFE WorX</h3>
+          <div class="role">Digital Marketing · Content & Social</div>
+        </div>
+        <span class="date-badge">2026</span>
+      </div>
+
+      <p style="color:var(--purple-200); margin-bottom:1.1rem;">
+        End-to-end contribution across social media, content creation, YouTube, event marketing for the Job Fair, and public relations. Built consistent presence, promotional materials, and organized video content.
+      </p>
+
+      <h4 style="color:white; margin:1.3rem 0 0.7rem; font-size:1.05rem;">What I delivered</h4>
+      <div class="gains-grid" id="gainsGrid">
+        <div class="gain-item">
+          <div class="icon">📱</div>
+          <h4>Social Media</h4>
+          <p>LinkedIn & Instagram content, captions, Buffer scheduling, content calendars.</p>
+        </div>
+        <div class="gain-item">
+          <div class="icon">🎨</div>
+          <h4>Content Design</h4>
+          <p>Canva posts, promotional visuals, campaign ideas and copy.</p>
+        </div>
+        <div class="gain-item">
+          <div class="icon">🎥</div>
+          <h4>YouTube</h4>
+          <p>Titles, descriptions, thumbnails, timelines & chapters for the channel.</p>
+        </div>
+        <div class="gain-item">
+          <div class="icon">📢</div>
+          <h4>Event Marketing</h4>
+          <p>Job Fair promotion through social content and materials.</p>
+        </div>
+        <div class="gain-item">
+          <div class="icon">🤝</div>
+          <h4>PR Support</h4>
+          <p>Interview coordination, announcements, press-related communication.</p>
+        </div>
+        <div class="gain-item">
+          <div class="icon">📈</div>
+          <h4>Campaigns</h4>
+          <p>Multi-platform planning and execution for visibility and engagement.</p>
+        </div>
+      </div>
+
+      <div class="skills-gained">
+        <span class="skill-chip">Social Media</span>
+        <span class="skill-chip">Canva</span>
+        <span class="skill-chip">Content Writing</span>
+        <span class="skill-chip">Buffer</span>
+        <span class="skill-chip">YouTube</span>
+        <span class="skill-chip">Event Marketing</span>
+        <span class="skill-chip">PR</span>
+      </div>
+
+      <h4 style="color:white; margin:1.6rem 0 0.7rem; font-size:1rem;">Thumbnails & content samples <span style="font-size:0.8rem; color:var(--purple-400); font-weight:400;">(hover to enlarge · click for full view)</span></h4>
+      <div class="thumb-gallery">
+        <div class="thumb-wrap" data-src="assets/1.png"><img src="assets/1.png" alt="Work sample 1" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/2.png"><img src="assets/2.png" alt="Work sample 2" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/3.png"><img src="assets/3.png" alt="Work sample 3" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/4.png"><img src="assets/4.png" alt="Work sample 4" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/5.png"><img src="assets/5.png" alt="Work sample 5" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/6.png"><img src="assets/6.png" alt="Work sample 6" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/7.png"><img src="assets/7.png" alt="Work sample 7" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/8.png"><img src="assets/8.png" alt="Work sample 8" loading="lazy" /></div>
+        <div class="thumb-wrap" data-src="assets/9.png"><img src="assets/9.png" alt="Work sample 9" loading="lazy" /></div>
+      </div>
+
+      <a href="https://lolymagdy2006-boop.github.io/The-Internship-Presentation/#responsibilities" target="_blank" rel="noopener" class="link-out">
+        Full case presentation →
+      </a>
+    </div>
+
+    <!-- Innovatera -->
+    <div class="work-card fade-scale">
+      <div class="work-header">
+        <div>
+          <h3>Innovatera</h3>
+          <div class="role">Marketing Support · Social & Campaign Visuals</div>
+        </div>
+        <span class="date-badge">Jul - Aug 2025</span>
+      </div>
+      <p style="color:var(--purple-200); margin-bottom:1.1rem;">
+        Created promotional social posts and campaign visuals for tech and education courses (Roblox, AI & Data Science, Robotics, Web Development) and supported marketing planning.
+      </p>
+      <div class="gains-grid">
+        <div class="gain-item visible">
+          <div class="icon">🖼️</div>
+          <h4>Social Design</h4>
+          <p>Course promotion posts and campaign creatives.</p>
+        </div>
+        <div class="gain-item visible">
+          <div class="icon">📋</div>
+          <h4>Campaign Support</h4>
+          <p>Marketing plans and content coordination.</p>
+        </div>
+        <div class="gain-item visible">
+          <div class="icon">👥</div>
+          <h4>Collaboration</h4>
+          <p>Worked with the team on delivery and consistency.</p>
+        </div>
+      </div>
+      <div class="skills-gained">
+        <span class="skill-chip">Social Media Design</span>
+        <span class="skill-chip">Campaign Visuals</span>
+        <span class="skill-chip">Marketing Plans</span>
+      </div>
+
+      <h4 style="color:white; margin:1.6rem 0 0.7rem; font-size:1rem;">Post examples <span style="font-size:0.8rem; color:var(--purple-400); font-weight:400;">(hover / click to enlarge)</span></h4>
+      <div class="posts-grid">
+        <div class="post-example" data-src="assets/innovatera/roblox.jpg">
+          <img src="assets/innovatera/roblox.jpg" alt="Roblox Game Design post" loading="lazy" />
+        </div>
+        <div class="post-example" data-src="assets/innovatera/junior_robotic.jpg">
+          <img src="assets/innovatera/junior_robotic.jpg" alt="Junior Robotic Course post" loading="lazy" />
+        </div>
+        <div class="post-example" data-src="assets/innovatera/ai_data.jpg">
+          <img src="assets/innovatera/ai_data.jpg" alt="AI and Data Sciences post" loading="lazy" />
+        </div>
+        <div class="post-example" data-src="assets/innovatera/senior_robotic.jpg">
+          <img src="assets/innovatera/senior_robotic.jpg" alt="Senior Robotic Course post" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIVERSITY / BRAND PROJECTS -->
+  <section id="projects">
+    <div class="fade-up">
+      <span class="section-label">Brand & Strategy</span>
+      <h2 class="section-title">Projects</h2>
+      <p class="section-intro">Strategy and branding work developed for a visiting French professor - full presentations available on Canva.</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card fade-scale">
+        <div class="project-visual pepsi">🥤</div>
+        <div class="project-body">
+          <div class="type">Brand Strategy · Campaign</div>
+          <h3>Pepsi France - “The Taste of More”</h3>
+          <p>Bridging the gap between Global Pepsi (13+ flavors) and the limited French range. Explored the “locked out of the fun” feeling students get from TikTok and proposed how to close the product and digital experience gap.</p>
+          <div class="project-meta">Year 2 · Semester 2</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <a href="https://canva.link/85cyct6eg6l2n7r" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+            <a href="https://www.figma.com/design/afViZPwXdzvX1ogI6CqLTR/Untitled?node-id=11-43&t=iZIQvBxkMwP1PT0o-1" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open Figma →</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card fade-scale">
+        <div class="project-visual iys">👟🧸</div>
+        <div class="project-body">
+          <div class="type">Capsule · Branding · Collaboration</div>
+          <h3>In Your Shoe Capsule × Care Bears</h3>
+          <p>Capsule collection created for the collaboration between In Your Shoe and Care Bears - softness, mood, and Gen Z expression turned into wearable pieces that feel like a warm hug, built around the Care Bears partnership.</p>
+          <div class="project-meta">Year 2 · Semester 1</div>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+            <a href="https://canva.link/44qcte1fgvg4gv5" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+            <a href="https://www.figma.com/design/a7jmJOHEmrvMUt9GwRiOFW/Untitled?node-id=38-425&t=m12FaFsYabKpGZ5h-1" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Open Figma →</a>
+          </div>
+        </div>
+      </div>
+      <div class="project-card fade-scale">
+        <div class="project-visual care">🧸👟</div>
+        <div class="project-body">
+          <div class="type">Collaboration Concept</div>
+          <h3>Care Bears × In Your Shoe</h3>
+          <p>Collaboration idea between In Your Shoe and Care Bears - playful, high-quality pieces aimed at driving traffic and expanding into a more family-friendly, fun territory.</p>
+          <div class="project-meta">Year 1 · Semester 2</div>
+          <a href="https://canva.link/c8je9bl1gjujyk7" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+        </div>
+      </div>
+      <div class="project-card fade-scale">
+        <div class="project-visual uofie">🎮</div>
+        <div class="project-body">
+          <div class="type">Graduation Project · In Progress</div>
+          <h3>UOFIE</h3>
+          <p>My graduation project - an educational game-style experience that blends learning with play. Concept centers on making study feel engaging (open book + game controller identity). Currently in development.</p>
+          <div class="project-meta">Graduation Project · Ongoing</div>
+          <a href="https://lolymagdy2006-boop.github.io/UOFIE-Game-Presentation/#home" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+        </div>
+      </div>
+      <div class="project-card fade-scale">
+        <div class="project-visual figma">✨</div>
+        <div class="project-body">
+          <div class="type">Group Project · UI/UX</div>
+          <h3>Group Project - Figma Design</h3>
+          <p>Ongoing team project where I lead the Figma design work - wireframes, visual system and interface design. Still in progress as the team iterates on product and experience.</p>
+          <div class="project-meta">Group Project · In Progress</div>
+          <a href="https://www.figma.com/design/JKQHEEMJZ23tIQvuao2iVl/Copy?node-id=0-1&t=Yv8OTb7jlJb3YET4-1" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Open Figma →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS / PERSONAL IDEAS -->
+  <section id="ideas">
+    <div class="fade-up">
+      <span class="section-label">Personal Ventures</span>
+      <h2 class="section-title">Ideas I’m Building</h2>
+      <p class="section-intro">Entrepreneurial concepts I’m developing - presentations and materials linked below.</p>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card fade-scale">
+        <div class="logo-text" style="background:linear-gradient(135deg,#c4b5fd,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">lenADHD</div>
+        <div class="tagline">MAKE LEARNING EASIER</div>
+        <p style="color:var(--purple-200); margin-bottom:0.9rem;">Learning platform for students with ADHD, their parents and teachers - online courses with psychologists and offline sessions.</p>
+        <ul>
+          <li>Addresses awareness & theory-heavy systems</li>
+          <li>Online + offline learning paths</li>
+          <li>Rooted in Hult Prize work</li>
+        </ul>
+        <div class="biz-links">
+          <a href="https://canva.link/3mmc7b53wdxv62c" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+        </div>
+      </div>
+      <div class="biz-card fade-scale">
+        <div class="logo-text" style="background:linear-gradient(135deg,#f9a8d4,#c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">MindCraft</div>
+        <div class="tagline">Learning Center</div>
+        <p style="color:var(--purple-200); margin-bottom:0.9rem;">Hands-on learning center and experiment kits so students understand through practice instead of pure memorization.</p>
+        <ul>
+          <li>Experiment kits + learning space</li>
+          <li>Pilot → growth → expansion plan</li>
+          <li>School partnerships</li>
+        </ul>
+        <div class="biz-links">
+          <a href="https://canva.link/l2tx31jheys2cy5" target="_blank" rel="noopener" class="btn btn-primary btn-sm">View presentation →</a>
+          <a href="https://canva.link/khcyynhr38o0ab5" target="_blank" rel="noopener" class="btn btn-outline btn-sm">View brochure →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT (supporting) -->
+  <section id="about">
+    <div class="fade-up">
+      <span class="section-label">About</span>
+      <h2 class="section-title">A bit about me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card slide-left">
+        <p>I’m a Digital Marketing student at the French University in Egypt who loves turning ideas into clear messages and visual content that actually connect.</p>
+        <p>I focus on content creation, social strategy, branding and campaign thinking - and I enjoy building concepts from scratch, whether for a brand brief or my own ventures.</p>
+        <div class="info-pills">
+          <span class="pill">Content</span>
+          <span class="pill">Social Media</span>
+          <span class="pill">Branding</span>
+          <span class="pill">Campaigns</span>
+          <span class="pill">Canva</span>
+        </div>
+      </div>
+      <div class="slide-right">
+        <div class="timeline" id="timeline">
+          <div class="timeline-item">
+            <h4>Digital Marketing - French University in Egypt</h4>
+            <div class="meta">2024 - Present</div>
+            <p>Focus on content, branding and strategic communication.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Head of Marketing - Art Club</h4>
+            <div class="meta">2025 - Present</div>
+            <p>Content strategy, events and campaigns.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Marketing - Debate & Philosophy Club</h4>
+            <div class="meta">2025 - Present</div>
+            <p>Brochures, plans and open-day representation.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>Hult Prize UFE - 2nd place</h4>
+            <div class="meta">2025</div>
+            <p>ADHD learning platform concept & pitch.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="fade-up" style="text-align:center;">
+      <span class="section-label">Tools & Skills</span>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills-cloud" style="margin-top:1.8rem;" id="skillsCloud">
+        <span class="skill-tag">Social Media Marketing</span>
+        <span class="skill-tag">Content Creation</span>
+        <span class="skill-tag">Canva</span>
+        <span class="skill-tag">Content Writing</span>
+        <span class="skill-tag">Campaign Planning</span>
+        <span class="skill-tag">Event Marketing</span>
+        <span class="skill-tag">YouTube</span>
+        <span class="skill-tag">Buffer</span>
+        <span class="skill-tag">Branding</span>
+        <span class="skill-tag">Team Collaboration</span>
+        <span class="skill-tag">Creative Problem Solving</span>
+        <span class="skill-tag">Communication</span>
+        <span class="skill-tag">Public Relations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="fade-up">
+      <span class="section-label">Contact</span>
+      <h2 class="section-title">Let’s work together</h2>
+      <p style="color:var(--purple-200); max-width:480px; margin:0 auto 1rem;">
+        Open to collaborations, projects and conversations about digital marketing, content and branding.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:lena.magdy@ufe.edu.eg" class="contact-link">✉️ lena.magdy@ufe.edu.eg</a>
+        <a href="https://www.linkedin.com/in/lena-magdy-521597323/" target="_blank" rel="noopener" class="contact-link">💼 LinkedIn</a>
+        <a href="tel:+201007342559" class="contact-link">📱 (+20) 01007342559</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Portfolio by Lena Magdy · 2026
+  </footer>
+
+  <script>
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (window.scrollY / h * 100) + '%';
+    });
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    const particlesEl = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (8 + Math.random() * 10) + 's';
+      p.style.animationDelay = (Math.random() * 12) + 's';
+      p.style.width = p.style.height = (2 + Math.random() * 3) + 'px';
+      particlesEl.appendChild(p);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.classList.contains('gains-grid') || entry.target.id === 'skillsCloud' || entry.target.id === 'timeline') {
+            Array.from(entry.target.children).forEach((child, i) => {
+              setTimeout(() => child.classList.add('visible'), i * 80);
+            });
+          }
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-scale, .slide-left, .slide-right, .section-label, .gains-grid, #skillsCloud, #timeline').forEach(el => observer.observe(el));
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.thumb-wrap, .post-example').forEach(el => {
+      el.addEventListener('click', () => openLightbox(el.dataset.src));
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>
